@@ -9,18 +9,18 @@ let dictionary = [ "ACUARIO", "BIFE", "COLMENA", "DADO", "ECLIPSE", "FLEXIBLE", 
 
 // Asignacion de la palabra elegida aleatoriamente
 let randomWord = selectRandomWord();
-console.log(randomWord);
+console.log( randomWord );
 
 // Registro tecla presionada del documento
-document.addEventListener("keydown", (evento) => {
+document.addEventListener( "keydown", ( evento ) => {
     
     /**
      * Guardo la letra presionada, eliminando los caracteres especiales y   * numeros de la entrada ingresada, Luego pasa la palabra a mayusculas
      */
-    inputLetter = evento.key.normalize("NFD").replace(/([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))([\u0300-\u036f]|[^a-zA-Z])/g, '').toUpperCase();
+    inputLetter = evento.key.normalize( "NFD" ).replace( /([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))([\u0300-\u036f]|[^a-zA-Z])/g, '' ).toUpperCase();
     validateLetter();
-    console.log(`Letras correctas: ${correctLetters}`);
-    console.log(`Letras incorrectas: ${incorrectLetters}`);
+    console.log( `Letras correctas: ${correctLetters}` );
+    console.log( `Letras incorrectas: ${incorrectLetters}` );
 });
 
 /**
@@ -29,17 +29,20 @@ document.addEventListener("keydown", (evento) => {
  *  Y tambien restrinjo el largo del input para que no tome 'key' de los tildes ( "DEAD" ) por ejemplo
  */
 function validateLetter(){
-    if(/[A-Z]|Ñ/.test(inputLetter) && inputLetter.length <= 2){
-        inputRegister.push(inputLetter);
+    if( /[A-Z]|Ñ/.test( inputLetter ) && inputLetter.length <= 2 ){
+        inputRegister.push( inputLetter );
 
         // Chequeo si la letra presionada esta en la palabra secreta
-        if(randomWord.search(inputLetter) != -1 ){
+        if( randomWord.search( inputLetter ) != -1 ){
 
            saveRightLetter();
+           // Informar letras correctas en canvas
+           // Dibujar la letra la cantidadde veces que aparezca en la palabra, en el canvas
 
         }else{
 
            saveWrongLetter();
+           // informar letras incorrectas en canvas
 
         }
     }
@@ -50,7 +53,7 @@ function validateLetter(){
 * guardo la letra elegida en una lista de letras correctas
 */
 function saveRightLetter(){
-    if( !correctLetters.includes(inputLetter))  correctLetters.push(inputLetter);
+    if( !correctLetters.includes( inputLetter ) ) correctLetters.push( inputLetter );
 }
 
 /**
@@ -58,7 +61,7 @@ function saveRightLetter(){
 * guardo la letra elegida en una lista de letras incorrectas
 */
 function saveWrongLetter(){
-    if(!incorrectLetters.includes(inputLetter))  incorrectLetters.push(inputLetter);
+    if( !incorrectLetters.includes( inputLetter ) ) incorrectLetters.push( inputLetter );
 }
 
 /**
@@ -67,6 +70,6 @@ function saveWrongLetter(){
  */
  function selectRandomWord(){
     // Eleccion aleatoria del indice de las palabras almacenadas en la lista de palabras
-    let randomIndex = Math.floor(Math.random()*dictionary.length);
-    return dictionary[randomIndex];
+    let randomIndex = Math.floor( Math.random() * dictionary.length );
+    return dictionary[ randomIndex ];
 }

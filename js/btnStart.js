@@ -1,7 +1,7 @@
 let points = 0;
 let lives = 7;
-let canvas = document.querySelector("canvas");
-let brush = canvas.getContext('2d');
+let canvas = document.querySelector( "canvas" );
+let brush = canvas.getContext( "2d" );
 let inicioTxt = 550;
 
 /**
@@ -9,11 +9,11 @@ let inicioTxt = 550;
  */
 function drawBoard () {
     brush.font = "20px Roboto";
-    brush.fillStyle="white";
-    brush.fillText(`Points: ${points}`, 5, 20);
-    brush.fillText(`Lives: ${lives}`, 100, 20);
+    brush.fillStyle = "white";
+    brush.fillText( `Points: ${points}`, 5, 20 );
+    brush.fillText( `Lives: ${lives}`, 100, 20 );
     createGallow();
-    drawTextLines(randomWord);
+    drawTextLines( randomWord );
 }
 
 /**
@@ -22,17 +22,17 @@ function drawBoard () {
 function createGallow(){
     brush.lineWidth = 5;
     brush.strokeStyle = "white";
-    brush.fillRect(50,550, 200, 50);
-    brush.fill();
+    brush.fillRect( 50,550, 200, 50 );
+    brush.stroke();
     brush.beginPath();
-    brush.moveTo(150,550);
-    brush.lineTo(150,550);
-    brush.lineTo(150,100);
-    brush.lineTo(450,100);
-    brush.lineTo(450,200);
-    brush.moveTo(400,200);
+    brush.moveTo( 150,550 );
+    brush.lineTo( 150,550 );
+    brush.lineTo( 150,100 );
+    brush.lineTo( 450,100 );
+    brush.lineTo( 450,200 );
+    brush.moveTo( 400,200 );
     // En esta linea tengo las coordenadas de donde debo empezar a dibujar el cuerpo del muñeco
-    brush.lineTo(500,200);
+    brush.lineTo( 500,200 );
     brush.stroke();
     
 }
@@ -42,10 +42,10 @@ function createGallow(){
  * @param {string} word Es la palabra elegida para el juego. Se usara para dibujar las lineas de la palabra a adivinar
  */
 function drawTextLines( word ){
-    for ( let i=0; i < word.length; i++){
-        brush.moveTo(inicioTxt, 550);
-        brush.lineTo(inicioTxt+30,550);
-        inicioTxt+=50;
+    for ( let i = 0; i < word.length; i++){
+        brush.moveTo( inicioTxt, 550 );
+        brush.lineTo( inicioTxt+30,550 );
+        inicioTxt += 50;
 
     }
     brush.stroke();
