@@ -8,6 +8,7 @@ let inicioTxt = 550;
  * Crea el tablero completo en el canvas. La figura de la Horca, las lineas de las letras, los puntos y las vidas
  */
 function drawBoard () {
+    canvas.style = 'display: inline';
     brush.font = "20px Roboto";
     brush.fillStyle = "white";
     brush.fillText( `Points: ${points}`, 5, 20 );
