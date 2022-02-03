@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --linkedin-icon-color: #0e76a8;
+    --github-icon-color: #000000;
+}
+
+.title{
+    text-align: center;
+    margin: 1em 0;
+}
+
+.button-container{
+    text-align: center;
+    margin: 1em 0;
+}
+
+.btn{
+    padding: 5px;
+    border: solid var(--linkedin-icon-color);
+    border-radius: 0.5em;
+}
+
+.canvas-container{
+    text-align: center;
+}
+
+canvas{
+    background-color: #303030;
+    border-radius: .5em;
+}
+
+
+/* FOOTER ELEMENT'S STYLES */
+footer{
+    padding: 20px 0 20px 20px;
+    text-align: center;
+}
+
+.icon-blue{
+    color: var(--linkedin-icon-color);
+    font-size: 1.5em;
+}
+
+.icon-black{
+    color: var(--github-icon-color);
+    font-size: 1.5em;
+}
