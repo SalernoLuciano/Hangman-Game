@@ -24,7 +24,6 @@ function createGallow(){
     brush.lineWidth = 5;
     brush.strokeStyle = "white";
     brush.fillRect( 50,550, 200, 50 );
-    brush.stroke();
     brush.beginPath();
     brush.moveTo( 150,550 );
     brush.lineTo( 150,550 );
@@ -35,6 +34,7 @@ function createGallow(){
     // En esta linea tengo las coordenadas de donde debo empezar a dibujar el cuerpo del muñeco
     brush.lineTo( 500,200 );
     brush.stroke();
+    brush.closePath();
     
 }
 
