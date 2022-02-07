@@ -15,7 +15,7 @@
     margin: 1em 0;
 }
 
-.button-container{
+.button-container, .new-word-container{
     text-align: center;
     margin: 1em 0;
 }
@@ -24,6 +24,14 @@
     padding: 5px;
     border: solid var(--linkedin-icon-color);
     border-radius: 0.5em;
+}
+
+.text-input{
+    height: 4em;
+    width: 20em;
+    padding: 1em;
+    border-radius: .5em;
+    border: 1px solid #0e76a8;
 }
 
 .canvas-container{

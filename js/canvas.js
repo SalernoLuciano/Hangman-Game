@@ -1,26 +1,34 @@
 let points = 0;
 let lives = 7;
 let canvas = document.querySelector( "canvas" );
-let brush = canvas.getContext( "2d" );
-let inicioTxt = 550;
+const brush = canvas.getContext( "2d" );
+const btnStart = document.querySelector( "#start-game" );
 
-/**
- * Crea el tablero completo en el canvas. La figura de la Horca, las lineas de las letras, los puntos y las vidas
- */
+btnStart.addEventListener( "click", () => {
+    correctLetters = [];
+    incorrectLetters = [];
+    randomWord = selectRandomWord( dictionary );
+    randomWord.split('');
+    console.log(randomWord);
+    drawBoard();
+    document.addEventListener( "keydown", ( evento ) => {
+        inputLetter = evento.key.normalize( "NFD" ).replace( /([\u0300-\u036f]|[^a-zA-Z])/g, '' ).toUpperCase();
+        validateLetter( inputLetter );
+    });
+} );
+
 function drawBoard () {
     canvas.style = 'display: inline';
+    brush.clearRect(0, 0, canvas.width, canvas.height);
     brush.font = "20px Roboto";
     brush.fillStyle = "white";
     brush.fillText( `Points: ${points}`, 5, 20 );
     brush.fillText( `Lives: ${lives}`, 100, 20 );
-    createGallow();
+    createGallow( brush );
     drawTextLines( randomWord );
 }
 
-/**
- * Creara la figura de la Horca
- */
-function createGallow(){
+function createGallow( brush ){
     brush.lineWidth = 5;
     brush.strokeStyle = "white";
     brush.fillRect( 50,550, 200, 50 );
@@ -35,19 +43,19 @@ function createGallow(){
     brush.lineTo( 500,200 );
     brush.stroke();
     brush.closePath();
-    
 }
 
-/**
- * Dibujara la cantidad de lineas correspondientes al 'word.length'
- * @param {string} word Es la palabra elegida para el juego. Se usara para dibujar las lineas de la palabra a adivinar
- */
 function drawTextLines( word ){
+    let inicioTxt = 550;
     for ( let i = 0; i < word.length; i++){
         brush.moveTo( inicioTxt, 550 );
         brush.lineTo( inicioTxt+30,550 );
         inicioTxt += 50;
-
     }
     brush.stroke();
+}
+
+function drawLetter( letter, index ){
+    brush.font = "30px Roboto";
+    brush.fillText(letter, 550 + ( index*50 ), 530);
 }
