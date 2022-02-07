@@ -49,7 +49,7 @@ function saveWrongLetter( inputLetter ){
     if( !incorrectLetters.includes( inputLetter ) ) incorrectLetters.push( inputLetter );
 }
 
- function selectRandomWord( dictionary ){
+function selectRandomWord( dictionary ){
     let randomIndex = Math.floor( Math.random() * dictionary.length );
     return dictionary[ randomIndex ];
 }
